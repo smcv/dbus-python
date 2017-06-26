@@ -44,7 +44,7 @@ AM_CPPFLAGS = \
 	-I$(top_srcdir)/include \
 	$(DBUS_CFLAGS) \
 	$(DBUS_GLIB_CFLAGS) \
-	$(PYTHON_INCLUDES) \
+	$(PYTHON_CPPFLAGS) \
 	$(NULL)
 AM_CFLAGS = \
 	$(WARN_CFLAGS) \
@@ -275,8 +275,9 @@ test_programs = \
 	$(NULL)
 
 test_test_import_repeatedly_SOURCES = test/import-repeatedly.c
-test_test_import_repeatedly_CPPFLAGS = $(PYTHON_INCLUDES)
-test_test_import_repeatedly_LDADD = $(PYTHON_LIBS)
+test_test_import_repeatedly_CPPFLAGS = $(PYTHON_CPPFLAGS)
+test_test_import_repeatedly_LDADD = $(PYTHON_LIBS) $(PYTHON_EXTRA_LIBS)
+test_test_import_repeatedly_LDFLAGS = $(PYTHON_EXTRA_LDFLAGS)
 
 TESTS = \
 	$(dist_test_py) \
